@@ -25,7 +25,7 @@ body {
 }
 
 #utmResult {
-    height: 250px; /* Adjust the height as needed */
+    height: 450px; /* Adjust the height as needed */
     resize: none; /* Disable textarea resizing */
 }
 
