@@ -25,12 +25,12 @@ body {
 }
 
 #utmResult {
-    height: 150px; /* Adjust the height as needed */
+    height: 250px; /* Adjust the height as needed */
     resize: none; /* Disable textarea resizing */
 }
 
 @media only screen and (max-width: 600px) {
     #utmResult {
-        height: 100px; /* Adjust the height for smaller screens */
+        height: 200px; /* Adjust the height for smaller screens */
     }
 }
