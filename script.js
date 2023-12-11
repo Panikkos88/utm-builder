@@ -9,10 +9,21 @@ function handleSourceChange() {
     }
 }
 
+function handleMediumChange() {
+    const mediumDropdown = document.getElementById('medium');
+    const customMediumContainer = document.getElementById('customMediumContainer');
+
+    if (mediumDropdown.value === 'manual') {
+        customMediumContainer.style.display = 'block';
+    } else {
+        customMediumContainer.style.display = 'none';
+    }
+}
+
 function buildURL() {
     const website = document.getElementById('website').value;
     const source = getSourceValue();
-    const medium = document.getElementById('medium').value;
+    const medium = getMediumValue();
     const campaign = document.getElementById('campaign').value;
     const term = document.getElementById('term').value;
     const content = document.getElementById('content').value;
@@ -37,4 +48,11 @@ function getSourceValue() {
     const customSourceInput = document.getElementById('customSource');
     
     return sourceDropdown.value === 'manual' ? customSourceInput.value : sourceDropdown.value;
+}
+
+function getMediumValue() {
+    const mediumDropdown = document.getElementById('medium');
+    const customMediumInput = document.getElementById('customMedium');
+    
+    return mediumDropdown.value === 'manual' ? customMediumInput.value : mediumDropdown.value;
 }
