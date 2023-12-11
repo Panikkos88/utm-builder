@@ -87,11 +87,12 @@
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
-                <input id="campaign" type="text" class="validate" value="DPG - Search - Brazil - Portuguese - mt4/5 - Broad" required>
-                <label for="campaign">Campaign</label>
-            </div>
-        </div>
+    <div class="input-field col s12">
+        <input id="campaign" type="text" class="validate" value="DPG - Search - Brazil - Portuguese - mt4/5 - Broad" required>
+        <label for="campaign">Campaign</label>
+        <i class="material-icons tooltipped" data-position="top" data-tooltip="DPG = Global Team, Search = Campaign Type, Brazil = Country, Portuguese = Language, MT4/5 = Product, Broad = Campaign Theme">info</i>
+    </div>
+</div>
 
         <div class="row">
             <div class="input-field col s12">
@@ -127,6 +128,11 @@
         M.toast({html: 'URL copied to clipboard!', classes: 'rounded'});
     }
 </script>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.tooltipped');
+        var instances = M.Tooltip.init(elems);
+    });
+</script>
 </body>
 </html>
