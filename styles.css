@@ -1,3 +1,4 @@
+/* Add these styles to your styles.css file */
 body {
     background-color: #f4f4f4;
 }
@@ -5,6 +6,10 @@ body {
 .container {
     max-width: 600px;
     margin: 50px auto;
+    background-color: #fff; /* Set a background color for the container */
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 8px; /* Add rounded corners to the container */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
 }
 
 .logo {
@@ -14,21 +19,18 @@ body {
 
 #result {
     margin-top: 20px;
-}
-
-.hidden {
-    display: none;
-}
-/* Add these styles to your styles.css file */
-#result {
-    margin-top: 20px;
-    overflow: auto; /* Add this property to enable scrolling if the content exceeds the height */
+    background-color: #eee; /* Set a background color for the result section */
+    padding: 10px; /* Add padding for better spacing */
+    border-radius: 4px; /* Add rounded corners */
 }
 
 #utmResult {
     height: 150px; /* Adjust the height as needed */
     resize: none; /* Disable textarea resizing */
     width: 100%; /* Ensure the textarea takes up the full width */
+    border: none; /* Remove textarea border */
+    background-color: transparent; /* Make the background transparent */
+    font-family: 'Roboto', sans-serif; /* Use a Material Design font */
 }
 
 @media only screen and (max-width: 600px) {
