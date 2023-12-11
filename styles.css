@@ -31,6 +31,6 @@ body {
 
 @media only screen and (max-width: 600px) {
     #utmResult {
-        height: 200px; /* Adjust the height for smaller screens */
+        height: 400px; /* Adjust the height for smaller screens */
     }
 }
