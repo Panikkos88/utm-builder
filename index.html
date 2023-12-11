@@ -3,69 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="styles.css">
     <title>UTM URL Builder</title>
 </head>
 <body>
-    <div class="container">
-        <!-- Logo -->
-        <img src="https://www.dooprime.com/wp-content/themes/DP3-1104/style/images/common/Man_Utd_x_Doo_mobile.png" alt="Dooprime Logo" class="logo">
 
-        <h1>UTM URL Builder</h1>
-        <form id="utmForm">
-            <label for="website">Website URL:</label>
-            <input type="url" id="website" name="website" value="https://www.dooprime.com/en/" required>
+<div class="container">
+    <!-- Logo -->
+    <img src="https://www.dooprime.com/wp-content/themes/DP3-1104/style/images/common/Man_Utd_x_Doo_mobile.png" alt="Dooprime Logo" class="logo">
 
-            <label for="source">Source:</label>
-            <select id="source" name="source" onchange="handleSourceChange()" required>
-                <option value="Google">Google</option>
-                <option value="Facebook">Facebook</option>
-                <option value="Instagram">Instagram</option>
-                <option value="manual">Manual Input</option>
-            </select>
-
-            <div id="customSourceContainer" style="display: none;">
-                <label for="customSource">Custom Source:</label>
-                <div id="manualSourceInput">
-                    <input type="text" id="customSource" name="customSource">
-                </div>
+    <h3 class="header">UTM URL Builder</h3>
+    <form class="col s12" id="utmForm">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="website" type="url" class="validate" value="https://www.dooprime.com/en/" required>
+                <label for="website">Website URL</label>
             </div>
-
-            <label for="medium">Medium:</label>
-            <select id="medium" name="medium" onchange="handleMediumChange()" required>
-                <option value="Social">Social</option>
-                <option value="Display">Display</option>
-                <option value="Search">Search</option>
-                <option value="Email">Email</option>
-                <option value="Media-buy">Media-buy</option>
-                <option value="manual">Manual Input</option>
-            </select>
-
-            <div id="customMediumContainer" style="display: none;">
-                <label for="customMedium">Custom Medium:</label>
-                <div id="manualMediumInput">
-                    <input type="text" id="customMedium" name="customMedium">
-                </div>
-            </div>
-
-            <label for="campaign">Campaign:</label>
-            <input type="text" id="campaign" name="campaign" value="DPG - Search - Brazil - Portuguese - mt4/5 - Broad" required>
-
-            <label for="term">Term:</label>
-            <input type="text" id="term" name="term">
-
-            <label for="content">Content:</label>
-            <input type="text" id="content" name="content">
-
-            <button type="button" onclick="buildURL()">Build URL</button>
-        </form>
-
-        <div id="result" class="hidden">
-            <h2>Generated UTM URL:</h2>
-            <textarea id="utmResult" readonly></textarea>
         </div>
-    </div>
 
-    <script src="script.js"></script>
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="source" name="source" onchange="handleSourceChange()" required>
+                    <option value="Google">Google</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="manual">Manual Input</option>
+                </select>
+                <label for="source">Source</label>
+
+                <div id="customSourceContainer" style="display: none;">
+                    <label for="customSource">Custom Source</label>
+                    <div id="manualSourceInput">
+                        <input type="text" id="customSource" name="customSource">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="medium" name="medium" onchange="handleMediumChange()" required>
+                    <option value="Social">Social</option>
+                    <option value="Display">Display</option>
+                    <option value="Search">Search</option>
+                    <option value="Email">Email</option>
+                    <option value="Media-buy">Media-buy</option>
+                    <option value="manual">Manual Input</option>
+                </select>
+                <label for="medium">Medium</label>
+
+                <div id="customMediumContainer" style="display: none;">
+                    <label for="customMedium">Custom Medium</label>
+                    <div id="manualMediumInput">
+                        <input type="text" id="customMedium" name="customMedium">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="campaign" type="text" class="validate" value="DPG - Search - Brazil - Portuguese - mt4/5 - Broad" required>
+                <label for="campaign">Campaign</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="term" type="text" class="validate">
+                <label for="term">Term</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="content" type="text" class="validate">
+                <label for="content">Content</label>
+            </div>
+        </div>
+
+        <button class="btn waves-effect waves-light" type="button" onclick="buildURL()">Build URL</button>
+    </form>
+
+    <div id="result" class="hidden">
+        <h4>Generated UTM URL:</h4>
+        <textarea id="utmResult" class="materialize-textarea" readonly></textarea>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
