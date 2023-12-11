@@ -22,15 +22,17 @@ body {
 /* Add these styles to your styles.css file */
 #result {
     margin-top: 20px;
+    overflow: auto; /* Add this property to enable scrolling if the content exceeds the height */
 }
 
 #utmResult {
-    height: 450px; /* Adjust the height as needed */
+    height: 150px; /* Adjust the height as needed */
     resize: none; /* Disable textarea resizing */
+    width: 100%; /* Ensure the textarea takes up the full width */
 }
 
 @media only screen and (max-width: 600px) {
     #utmResult {
-        height: 400px; /* Adjust the height for smaller screens */
+        height: 100px; /* Adjust the height for smaller screens */
     }
 }
