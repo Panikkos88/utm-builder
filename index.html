@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>UTM URL Builder</title>
+</head>
+<body>
+    <div class="container">
+        <h1>UTM URL Builder</h1>
+        <form id="utmForm">
+            <label for="source">Source:</label>
+            <input type="text" id="source" name="source" required>
+
+            <label for="medium">Medium:</label>
+            <input type="text" id="medium" name="medium" required>
+
+            <label for="campaign">Campaign:</label>
+            <input type="text" id="campaign" name="campaign" required>
+
+            <label for="term">Term:</label>
+            <input type="text" id="term" name="term">
+
+            <label for="content">Content:</label>
+            <input type="text" id="content" name="content">
+
+            <button type="button" onclick="buildURL()">Build URL</button>
+        </form>
+
+        <div id="result" class="hidden">
+            <h2>Generated UTM URL:</h2>
+            <textarea id="utmResult" readonly></textarea>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
