@@ -19,3 +19,22 @@ function buildURL() {
     document.getElementById('utmResult').value = utmURL;
     document.getElementById('result').classList.remove('hidden');
 }
+function handleSourceChange() {
+    const sourceDropdown = document.getElementById('source');
+    const customSourceContainer = document.getElementById('customSourceContainer');
+
+    if (sourceDropdown.value === 'manual') {
+        customSourceContainer.style.display = 'block';
+    } else {
+        customSourceContainer.style.display = 'none';
+    }
+}
+
+function buildURL() {
+    // Existing buildURL function logic
+    // ...
+
+    // You can access the custom source value here if needed
+    const customSource = document.getElementById('customSource').value;
+    console.log('Custom Source:', customSource);
+}
