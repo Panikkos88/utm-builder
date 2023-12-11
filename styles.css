@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 600px;
     margin: 50px auto;
     background-color: #fff; /* Set a background color for the container */
     padding: 20px; /* Add padding for better spacing */
@@ -13,7 +13,7 @@ body {
 }
 
 .logo {
-    max-width: 100%;
+    max-width: 60%;
     height: auto;
 }
 
@@ -25,7 +25,7 @@ body {
 }
 
 #utmResult {
-    height: 150px; /* Adjust the height as needed */
+    height: 100px; /* Adjust the height as needed */
     resize: none; /* Disable textarea resizing */
     width: 100%; /* Ensure the textarea takes up the full width */
     border: none; /* Remove textarea border */
