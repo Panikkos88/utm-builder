@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 50px auto;
     background-color: #fff; /* Set a background color for the container */
     padding: 20px; /* Add padding for better spacing */
