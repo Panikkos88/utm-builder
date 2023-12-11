@@ -31,6 +31,8 @@ body {
     border: none; /* Remove textarea border */
     background-color: transparent; /* Make the background transparent */
     font-family: 'Roboto', sans-serif; /* Use a Material Design font */
+    box-shadow: none; /* Remove box shadow */
+    outline: none; /* Remove outline on focus */
 }
 
 @media only screen and (max-width: 600px) {
