@@ -19,3 +19,18 @@ body {
 .hidden {
     display: none;
 }
+/* Add these styles to your styles.css file */
+#result {
+    margin-top: 20px;
+}
+
+#utmResult {
+    height: 150px; /* Adjust the height as needed */
+    resize: none; /* Disable textarea resizing */
+}
+
+@media only screen and (max-width: 600px) {
+    #utmResult {
+        height: 100px; /* Adjust the height for smaller screens */
+    }
+}
