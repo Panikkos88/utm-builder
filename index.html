@@ -118,11 +118,8 @@
             </form>
         </div>
 
-        <div class="col s6">
-            <div id="storedURLsContainer">
-                <h4>Stored URLs:</h4>
-                <ul id="storedURLsList"></ul>
-            </div>
+       <div class="col s6">
+            <!-- No stored URLs section at this stage -->
         </div>
     </div>
 </div>
@@ -137,16 +134,13 @@
 
         var selectElems = document.querySelectorAll('select');
         var instancesSelect = M.FormSelect.init(selectElems);
-
-        // Load previously stored URLs on page load
-        loadStoredURLs();
     });
 
     function copyToClipboard() {
-        var copyText = document.getElementById("utmResult");
+        var copyText = document.getElementById('utmResult');
         copyText.select();
-        document.execCommand("copy");
-        M.toast({html: 'URL copied to clipboard!', classes: 'rounded'});
+        document.execCommand('copy');
+        M.toast({ html: 'URL copied to clipboard!', classes: 'rounded' });
     }
 </script>
 
