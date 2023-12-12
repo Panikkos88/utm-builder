@@ -1,58 +1,66 @@
-function handleSourceChange() {
-    const sourceDropdown = document.getElementById('source');
-    const customSourceContainer = document.getElementById('customSourceContainer');
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
 
-    if (sourceDropdown.value === 'manual') {
-        customSourceContainer.style.display = 'block';
-    } else {
-        customSourceContainer.style.display = 'none';
-    }
-}
+    var selectElems = document.querySelectorAll('select');
+    var instancesSelect = M.FormSelect.init(selectElems);
 
-function handleMediumChange() {
-    const mediumDropdown = document.getElementById('medium');
-    const customMediumContainer = document.getElementById('customMediumContainer');
-
-    if (mediumDropdown.value === 'manual') {
-        customMediumContainer.style.display = 'block';
-    } else {
-        customMediumContainer.style.display = 'none';
-    }
-}
+    // Load previously stored URLs on page load
+    loadStoredURLs();
+});
 
 function buildURL() {
-    const website = document.getElementById('website').value;
-    const source = getSourceValue();
-    const medium = getMediumValue();
-    const campaign = document.getElementById('campaign').value;
-    const term = document.getElementById('term').value;
-    const content = document.getElementById('content').value;
+    // Your existing code to build the URL
+    var utmURL = generateUTMURL();
 
-    const utmParams = {
-        source: encodeURIComponent(source),
-        medium: encodeURIComponent(medium),
-        campaign: encodeURIComponent(campaign),
-        term: encodeURIComponent(term),
-        content: encodeURIComponent(content),
-    };
-
-    const utmURL = `${website}?utm_source=${utmParams.source}&utm_medium=${utmParams.medium}&utm_campaign=${utmParams.campaign}` +
-        `${utmParams.term ? `&utm_term=${utmParams.term}` : ''}${utmParams.content ? `&utm_content=${utmParams.content}` : ''}`;
-
-    document.getElementById('utmResult').value = utmURL;
-    document.getElementById('result').classList.remove('hidden');
+    // Save the generated URL to local storage
+    saveURLToStorage(utmURL);
 }
 
-function getSourceValue() {
-    const sourceDropdown = document.getElementById('source');
-    const customSourceInput = document.getElementById('customSource');
-    
-    return sourceDropdown.value === 'manual' ? customSourceInput.value : sourceDropdown.value;
+function generateUTMURL() {
+    // Your existing code to generate the UTM URL
+    // ...
+
+    return utmURL;
 }
 
-function getMediumValue() {
-    const mediumDropdown = document.getElementById('medium');
-    const customMediumInput = document.getElementById('customMedium');
-    
-    return mediumDropdown.value === 'manual' ? customMediumInput.value : mediumDropdown.value;
+function saveURLToStorage(url) {
+    // Get existing stored URLs or initialize an empty array
+    var storedURLs = JSON.parse(localStorage.getItem('storedURLs')) || [];
+
+    // Add the new URL to the array
+    storedURLs.push(url);
+
+    // Save the updated array back to local storage
+    localStorage.setItem('storedURLs', JSON.stringify(storedURLs));
+
+    // Load the updated list of stored URLs
+    loadStoredURLs();
+}
+
+function loadStoredURLs() {
+    // Get stored URLs from local storage
+    var storedURLs = JSON.parse(localStorage.getItem('storedURLs')) || [];
+
+    // Display the stored URLs in a separate tab or section
+    displayStoredURLs(storedURLs);
+}
+
+function displayStoredURLs(urls) {
+    // Display the stored URLs in a separate tab or section
+    var storedURLsContainer = document.getElementById('storedURLsContainer');
+    if (storedURLsContainer) {
+        storedURLsContainer.innerHTML = '<h4>Stored URLs:</h4>';
+        if (urls.length > 0) {
+            var ul = document.createElement('ul');
+            urls.forEach(function (url) {
+                var li = document.createElement('li');
+                li.textContent = url;
+                ul.appendChild(li);
+            });
+            storedURLsContainer.appendChild(ul);
+        } else {
+            storedURLsContainer.innerHTML += '<p>No stored URLs.</p>';
+        }
+    }
 }
