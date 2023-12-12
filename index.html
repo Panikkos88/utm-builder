@@ -41,7 +41,16 @@
                             <option value="Google">Google</option>
                             <option value="Facebook">Facebook</option>
                             <option value="Instagram">Instagram</option>
-                            <!-- Add more source options here -->
+                             <option value="Yahoo">Yahoo</option>
+                    <option value="Bing">Bing</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Telegram">Telegram</option>
+                    <option value="Twitter/X">Twitter/X</option>
+                    <option value="Adroll">Adroll</option>
+                    <option value="blog">Blog</option>
+                    <option value="Criteo">Criteo</option>
+                    <option value="manual">Manual Input</option>
                         </select>
                         <label for="source">Source</label>
 
@@ -63,7 +72,13 @@
                             <option value="Search">Search</option>
                             <option value="Email">Email</option>
                             <option value="Media-buy">Media-buy</option>
-                            <!-- Add more medium options here -->
+                            <option value="Ebook">Ebook</option>
+                    <option value="Influencer">Influencer</option>
+                    <option value="Blog">Blog</option>
+                    <option value="Remarketing">Remarketing</option>
+                    <option value="Expo">Expo</option>
+                    <option value="Seminar">Seminar</option>
+                    <option value="manual">Manual Input</option>
                         </select>
                         <label for="medium">Medium</label>
 
@@ -76,7 +91,28 @@
                     </div>
                 </div>
 
-                <!-- Add other form fields here -->
+               <div class="row">
+            <div class="input-field col s12">
+                <input id="campaign" type="text" class="validate" value="DPG - Search - Brazil - Portuguese - mt4/5 - Broad" required>
+                <label for="campaign">Campaign</label>
+                <i class="material-icons tooltipped" data-position="top" data-tooltip="DPG = Global Team, Search = Campaign Type, Brazil = Country, Portuguese = Language, MT4/5 = Product, Broad = Campaign Theme">info</i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="term" type="text" class="validate">
+                <label for="term">Term</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="content" type="text" class="validate">
+                <label for="content">Content</label>
+            </div>
+        </div>
+
 
                 <button class="btn waves-effect waves-light" type="button" onclick="buildURL()">Build URL</button>
             </form>
