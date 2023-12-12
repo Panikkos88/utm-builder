@@ -18,6 +18,8 @@ function buildURL() {
 }
 
 function generateUTMURL() {
+    var utmURL;
+
     var websiteURL = document.getElementById('website').value;
     var source = document.getElementById('source').value;
     var medium = document.getElementById('medium').value;
