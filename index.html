@@ -8,11 +8,9 @@
     <title>UTM URL Builder</title>
 </head>
 <body>
-
 <div class="container center-align">
     <!-- Logo -->
     <img src="https://www.dooprime.com/wp-content/themes/DP3-1104/style/images/common/Man_Utd_x_Doo_mobile.png" alt="Dooprime Logo" class="logo mx-auto">
-
     <h3 class="header">UTM URL Builder</h3>
     <div id="result" class="hidden">
         <h4>Generated UTM URL:</h4>
@@ -24,13 +22,6 @@
             </div>
         </div>
     </div>
-
-    <div class="info-tooltip">
-        <span class="tooltipped" data-position="top" data-tooltip="DPG = Global Team, Search = Campaign Type, Brazil = Country, Portuguese = Language, MT4/5 = Product, Broad = Campaign Theme">
-            <i class="material-icons">info</i>
-        </span>
-    </div>
-
     <form class="col s12" id="utmForm">
         <div class="row">
             <div class="input-field col s12">
@@ -38,17 +29,23 @@
                 <label for="website">Website URL</label>
             </div>
         </div>
-
         <div class="row">
             <div class="input-field col s12">
                 <select id="source" name="source" onchange="handleSourceChange()" required>
                     <option value="Google">Google</option>
                     <option value="Facebook">Facebook</option>
                     <option value="Instagram">Instagram</option>
+                    <option value="Yahoo">Yahoo</option>
+                    <option value="Bing">Bing</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Telegran">Telegram</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="Adroll">Adroll</option>
+                    <option value="Blog">Blog</option>
+                    <option value="Criteo">Criteo</option>
                     <option value="manual">Manual Input</option>
                 </select>
                 <label for="source">Source</label>
-
                 <div id="customSourceContainer" style="display: none;">
                     <label for="customSource">Custom Source</label>
                     <div id="manualSourceInput">
@@ -57,7 +54,67 @@
                 </div>
             </div>
         </div>
-
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="medium" name="medium" onchange="handleMediumChange()" required>
+                    <option value="Social">Social</option>
+                    <option value="Display">Display</option>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>UTM URL Builder</title>
+</head>
+<body>
+<div class="container center-align">
+    <!-- Logo -->
+    <img src="https://www.dooprime.com/wp-content/themes/DP3-1104/style/images/common/Man_Utd_x_Doo_mobile.png" alt="Dooprime Logo" class="logo mx-auto">
+    <h3 class="header">UTM URL Builder</h3>
+    <div id="result" class="hidden">
+        <h4>Generated UTM URL:</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="utmResult" class="materialize-textarea" readonly rows="3"></textarea>
+                <label for="utmResult">Result URL</label>
+                <button class="btn waves-effect waves-light" onclick="copyToClipboard()">Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+    <form class="col s12" id="utmForm">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="website" type="url" class="validate" value="https://www.dooprime.com/en/" required>
+                <label for="website">Website URL</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="source" name="source" onchange="handleSourceChange()" required>
+                    <option value="Google">Google</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Yahoo">Yahoo</option>
+                    <option value="Bing">Bing</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Telegran">Telegram</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="Adroll">Adroll</option>
+                    <option value="Blog">Blog</option>
+                    <option value="Criteo">Criteo</option>
+                    <option value="manual">Manual Input</option>
+                </select>
+                <label for="source">Source</label>
+                <div id="customSourceContainer" style="display: none;">
+                    <label for="customSource">Custom Source</label>
+                    <div id="manualSourceInput">
+                        <input type="text" id="customSource" name="customSource">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="input-field col s12">
                 <select id="medium" name="medium" onchange="handleMediumChange()" required>
@@ -66,7 +123,12 @@
                     <option value="Search">Search</option>
                     <option value="Email">Email</option>
                     <option value="Media-buy">Media-buy</option>
+                   <option value="Ebook">Ebook</option>
+                   <option value="Blog">Blog</option>
+                    <option value="Influencer">Influencer</option>
+                    <option value="Remarketing">Remarketing</option>
                     <option value="manual">Manual Input</option>
+
                 </select>
                 <label for="medium">Medium</label>
 
@@ -78,45 +140,35 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="input-field col s12">
                 <input id="campaign" type="text" class="validate" value="DPG - Search - Brazil - Portuguese - mt4/5 - Broad" required>
                 <label for="campaign">Campaign</label>
-                <i class="material-icons tooltipped" data-position="top" data-tooltip="DPG = Global Team, Search = Campaign Type, Brazil = Country, Portuguese = Language, MT4/5 = Product, Broad = Campaign Theme">info</i>
             </div>
         </div>
-
         <div class="row">
             <div class="input-field col s12">
                 <input id="term" type="text" class="validate">
                 <label for="term">Term</label>
             </div>
         </div>
-
         <div class="row">
             <div class="input-field col s12">
                 <input id="content" type="text" class="validate">
                 <label for="content">Content</label>
             </div>
         </div>
-
         <button class="btn waves-effect waves-light" type="button" onclick="buildURL()">Build URL</button>
     </form>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="script.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.tooltipped');
-        var instances = M.Tooltip.init(elems);
-
-        var selectElems = document.querySelectorAll('select');
-        var instancesSelect = M.FormSelect.init(selectElems);
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
     });
-
     function copyToClipboard() {
         var copyText = document.getElementById("utmResult");
         copyText.select();
@@ -124,6 +176,51 @@
         M.toast({html: 'URL copied to clipboard!', classes: 'rounded'});
     }
 </script>
-
+</body>
+</html>
+                <div id="customMediumContainer" style="display: none;">
+                    <label for="customMedium">Custom Medium</label>
+                    <div id="manualMediumInput">
+                        <input type="text" id="customMedium" name="customMedium">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="campaign" type="text" class="validate" value="DPG - Search - Brazil - Portuguese - mt4/5 - Broad" required>
+                <label for="campaign">Campaign</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="term" type="text" class="validate">
+                <label for="term">Term</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="content" type="text" class="validate">
+                <label for="content">Content</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="button" onclick="buildURL()">Build URL</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+    function copyToClipboard() {
+        var copyText = document.getElementById("utmResult");
+        copyText.select();
+        document.execCommand("copy");
+        M.toast({html: 'URL copied to clipboard!', classes: 'rounded'});
+    }
+</script>
 </body>
 </html>
