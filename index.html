@@ -10,92 +10,73 @@
 <body>
 
 <div class="container">
-    <div class="row">
-        <div class="col s12 m6">
-            <!-- Logo -->
-            <img src="https://www.dooprime.com/wp-content/themes/DP3-1104/style/images/common/Man_Utd_x_Doo_mobile.png" alt="Dooprime Logo" class="logo mx-auto">
-            <h3 class="header">UTM URL Builder</h3>
-            <div id="result" class="hidden">
-                <h4>Generated UTM URL:</h4>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="utmResult" class="materialize-textarea" readonly rows="3"></textarea>
-                        <label for="utmResult">Result URL</label>
-                        <button class="btn waves-effect waves-light" onclick="copyToClipboard()">Copy to Clipboard</button>
+    <!-- Logo -->
+    <img src="https://www.dooprime.com/wp-content/themes/DP3-1104/style/images/common/Man_Utd_x_Doo_mobile.png" alt="Dooprime Logo" class="logo">
+
+    <h3 class="header">UTM URL Builder</h3>
+    <div id="result" class="hidden">
+        <h4>Generated UTM URL:</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="utmResult" type="text" class="validate" readonly>
+                <label for="utmResult">Result URL</label>
+                <button class="btn waves-effect waves-light" onclick="copyToClipboard()">Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+
+    <form class="col s12" id="utmForm">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="website" type="url" class="validate" value="https://www.dooprime.com/en/" required>
+                <label for="website">Website URL</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="source" name="source" onchange="handleSourceChange()" required>
+                    <option value="Google">Google</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="manual">Manual Input</option>
+                </select>
+                <label for="source">Source</label>
+
+                <div id="customSourceContainer" style="display: none;">
+                    <label for="customSource">Custom Source</label>
+                    <div id="manualSourceInput">
+                        <input type="text" id="customSource" name="customSource">
                     </div>
                 </div>
             </div>
+        </div>
 
-            <form class="col s12" id="utmForm">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="website" type="url" class="validate" value="https://www.dooprime.com/en/" required>
-                        <label for="website">Website URL</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <select id="source" name="source" onchange="handleSourceChange()" required>
-                            <option value="" disabled selected>Select Source</option>
-                            <option value="Google">Google</option>
-                            <option value="Facebook">Facebook</option>
-                            <option value="Instagram">Instagram</option>
-                             <option value="Yahoo">Yahoo</option>
-                    <option value="Bing">Bing</option>
-                    <option value="LinkedIn">LinkedIn</option>
-                    <option value="TikTok">TikTok</option>
-                    <option value="Telegram">Telegram</option>
-                    <option value="Twitter/X">Twitter/X</option>
-                    <option value="Adroll">Adroll</option>
-                    <option value="blog">Blog</option>
-                    <option value="Criteo">Criteo</option>
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="medium" name="medium" onchange="handleMediumChange()" required>
+                    <option value="Social">Social</option>
+                    <option value="Display">Display</option>
+                    <option value="Search">Search</option>
+                    <option value="Email">Email</option>
+                    <option value="Media-buy">Media-buy</option>
                     <option value="manual">Manual Input</option>
-                        </select>
-                        <label for="source">Source</label>
+                </select>
+                <label for="medium">Medium</label>
 
-                        <div id="customSourceContainer" style="display: none;">
-                            <label for="customSource">Custom Source</label>
-                            <div id="manualSourceInput">
-                                <input type="text" id="customSource" name="customSource">
-                            </div>
-                        </div>
+                <div id="customMediumContainer" style="display: none;">
+                    <label for="customMedium">Custom Medium</label>
+                    <div id="manualMediumInput">
+                        <input type="text" id="customMedium" name="customMedium">
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <select id="medium" name="medium" onchange="handleMediumChange()" required>
-                            <option value="" disabled selected>Select Medium</option>
-                            <option value="Social">Social</option>
-                            <option value="Display">Display</option>
-                            <option value="Search">Search</option>
-                            <option value="Email">Email</option>
-                            <option value="Media-buy">Media-buy</option>
-                            <option value="Ebook">Ebook</option>
-                    <option value="Influencer">Influencer</option>
-                    <option value="Blog">Blog</option>
-                    <option value="Remarketing">Remarketing</option>
-                    <option value="Expo">Expo</option>
-                    <option value="Seminar">Seminar</option>
-                    <option value="manual">Manual Input</option>
-                 </select>
-                        <label for="medium">Medium</label>
-
-                        <div id="customMediumContainer" style="display: none;">
-                            <label for="customMedium">Custom Medium</label>
-                            <div id="manualMediumInput">
-                                <input type="text" id="customMedium" name="customMedium">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-               <div class="row">
+        <div class="row">
             <div class="input-field col s12">
                 <input id="campaign" type="text" class="validate" value="DPG - Search - Brazil - Portuguese - mt4/5 - Broad" required>
                 <label for="campaign">Campaign</label>
-                <i class="material-icons tooltipped" data-position="top" data-tooltip="DPG = Global Team, Search = Campaign Type, Brazil = Country, Portuguese = Language, MT4/5 = Product, Broad = Campaign Theme">info</i>
             </div>
         </div>
 
@@ -113,15 +94,8 @@
             </div>
         </div>
 
-
-                <button class="btn waves-effect waves-light" type="button" onclick="buildURL()">Build URL</button>
-            </form>
-        </div>
-
-      <div class="col s12 m6">
-            <!-- No stored URLs section at this stage -->
-        </div>
-    </div>
+        <button class="btn waves-effect waves-light" type="button" onclick="buildURL()">Build URL</button>
+    </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -129,18 +103,15 @@
 <script src="script.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.tooltipped');
-        var instances = M.Tooltip.init(elems);
-
-        var selectElems = document.querySelectorAll('select');
-        var instancesSelect = M.FormSelect.init(selectElems);
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
     });
 
     function copyToClipboard() {
-        var copyText = document.getElementById('utmResult');
+        var copyText = document.getElementById("utmResult");
         copyText.select();
-        document.execCommand('copy');
-        M.toast({ html: 'URL copied to clipboard!', classes: 'rounded' });
+        document.execCommand("copy");
+        M.toast({html: 'URL copied to clipboard!', classes: 'rounded'});
     }
 </script>
 
