@@ -1,64 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.tooltipped');
-    var instances = M.Tooltip.init(elems);
-
-    var selectElems = document.querySelectorAll('select');
-    var instancesSelect = M.FormSelect.init(selectElems);
-});
-
-function buildURL() {
-    // Your existing code to build the URL
-    var utmURL = generateUTMURL();
-
-    // Display the generated URL in the textarea
-    document.getElementById('utmResult').value = utmURL;
-
-    // Show the result section
-    document.getElementById('result').classList.remove('hidden');
-}
-
-function generateUTMURL() {
-
-
-    var websiteURL = document.getElementById('website').value;
-    var source = document.getElementById('source').value;
-    var medium = document.getElementById('medium').value;
-    var customSource = document.getElementById('customSource').value;
-    var customMedium = document.getElementById('customMedium').value;
-
-    // Build the UTM parameters
-    var utmParameters = [
-        'utm_source=' + (source === 'manual' ? customSource : source),
-        'utm_medium=' + (medium === 'manual' ? customMedium : medium),
-        // Add other UTM parameters here
-    ];
-
-    // Combine the UTM parameters into the URL
-    var utmURL = websiteURL + '?' + utmParameters.join('&');
-
-    // Display the generated URL in the textarea
-    document.getElementById('utmResult').value = utmURL;
-
-    // Show the result section
-    document.getElementById('result').classList.remove('hidden');
-
-
-    return utmURL;
-}
-
-function copyToClipboard() {
-    var copyText = document.getElementById('utmResult');
-    copyText.select();
-    document.execCommand('copy');
-    M.toast({ html: 'URL copied to clipboard!', classes: 'rounded' });
-}
-
 function handleSourceChange() {
-    var source = document.getElementById('source').value;
+    const sourceDropdown = document.getElementById('source');
+    const customSourceContainer = document.getElementById('customSourceContainer');
 
-    // Toggle visibility of custom source input based on the selected source
-    var customSourceContainer = document.getElementById('customSourceContainer');
-    if (source === 'manual') {
+    if (sourceDropdown.value === 'manual') {
         customSourceContainer.style.display = 'block';
     } else {
         customSourceContainer.style.display = 'none';
@@ -66,13 +10,49 @@ function handleSourceChange() {
 }
 
 function handleMediumChange() {
-    var medium = document.getElementById('medium').value;
+    const mediumDropdown = document.getElementById('medium');
+    const customMediumContainer = document.getElementById('customMediumContainer');
 
-    // Toggle visibility of custom medium input based on the selected medium
-    var customMediumContainer = document.getElementById('customMediumContainer');
-    if (medium === 'manual') {
+    if (mediumDropdown.value === 'manual') {
         customMediumContainer.style.display = 'block';
     } else {
         customMediumContainer.style.display = 'none';
     }
+}
+
+function buildURL() {
+    const website = document.getElementById('website').value;
+    const source = getSourceValue();
+    const medium = getMediumValue();
+    const campaign = document.getElementById('campaign').value;
+    const term = document.getElementById('term').value;
+    const content = document.getElementById('content').value;
+
+    const utmParams = {
+        source: encodeURIComponent(source),
+        medium: encodeURIComponent(medium),
+        campaign: encodeURIComponent(campaign),
+        term: encodeURIComponent(term),
+        content: encodeURIComponent(content),
+    };
+
+    const utmURL = `${website}?utm_source=${utmParams.source}&utm_medium=${utmParams.medium}&utm_campaign=${utmParams.campaign}` +
+        `${utmParams.term ? `&utm_term=${utmParams.term}` : ''}${utmParams.content ? `&utm_content=${utmParams.content}` : ''}`;
+
+    document.getElementById('utmResult').value = utmURL;
+    document.getElementById('result').classList.remove('hidden');
+}
+
+function getSourceValue() {
+    const sourceDropdown = document.getElementById('source');
+    const customSourceInput = document.getElementById('customSource');
+    
+    return sourceDropdown.value === 'manual' ? customSourceInput.value : sourceDropdown.value;
+}
+
+function getMediumValue() {
+    const mediumDropdown = document.getElementById('medium');
+    const customMediumInput = document.getElementById('customMedium');
+    
+    return mediumDropdown.value === 'manual' ? customMediumInput.value : mediumDropdown.value;
 }
