@@ -42,9 +42,19 @@
         <div class="row">
             <div class="input-field col s12">
                 <select id="source" name="source" onchange="handleSourceChange()" required>
+                    <option value="" disabled selected>Select Source</option>
                     <option value="Google">Google</option>
                     <option value="Facebook">Facebook</option>
                     <option value="Instagram">Instagram</option>
+                    <option value="Yahoo">Yahoo</option>
+                    <option value="Bing">Bing</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Telegram">Telegram</option>
+                    <option value="Twitter/X">Twitter/X</option>
+                    <option value="Adroll">Adroll</option>
+                    <option value="blog">Blog</option>
+                    <option value="Criteo">Criteo</option>
                     <option value="manual">Manual Input</option>
                 </select>
                 <label for="source">Source</label>
@@ -61,11 +71,18 @@
         <div class="row">
             <div class="input-field col s12">
                 <select id="medium" name="medium" onchange="handleMediumChange()" required>
+                    <option value="" disabled selected>Select Medium</option>
                     <option value="Social">Social</option>
                     <option value="Display">Display</option>
                     <option value="Search">Search</option>
                     <option value="Email">Email</option>
                     <option value="Media-buy">Media-buy</option>
+                    <option value="Ebook">Ebook</option>
+                    <option value="Influencer">Influencer</option>
+                    <option value="Blog">Blog</option>
+                    <option value="Remarketing">Remarketing</option>
+                    <option value="Expo">Expo</option>
+                    <option value="Seminar">Seminar</option>
                     <option value="manual">Manual Input</option>
                 </select>
                 <label for="medium">Medium</label>
