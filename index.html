@@ -15,14 +15,20 @@
 
     <h3 class="header">UTM URL Builder</h3>
     <div id="result" class="hidden">
-        <h4>Generated url:</h4>
+        <h4>Generated UTM URL:</h4>
         <div class="row">
             <div class="input-field col s12">
                 <textarea id="utmResult" class="materialize-textarea" readonly rows="3"></textarea>
-                
+                <label for="utmResult">Result URL</label>
                 <button class="btn waves-effect waves-light" onclick="copyToClipboard()">Copy to Clipboard</button>
             </div>
         </div>
+    </div>
+
+    <div class="info-tooltip">
+        <span class="tooltipped" data-position="top" data-tooltip="DPG = Global Team, Search = Campaign Type, Brazil = Country, Portuguese = Language, MT4/5 = Product, Broad = Campaign Theme">
+            <i class="material-icons">info</i>
+        </span>
     </div>
 
     <form class="col s12" id="utmForm">
@@ -39,14 +45,6 @@
                     <option value="Google">Google</option>
                     <option value="Facebook">Facebook</option>
                     <option value="Instagram">Instagram</option>
-                    <option value="Yahoo">Yahoo</option>
-                    <option value="Bing">Bing</option>
-                    <option value="TikTok">TikTok</option>
-                    <option value="Telegran">Telegram</option>
-                    <option value="Twitter">Twitter</option>
-                    <option value="Adroll">Adroll</option>
-                    <option value="Blog">Blog</option>
-                    <option value="Criteo">Criteo</option>
                     <option value="manual">Manual Input</option>
                 </select>
                 <label for="source">Source</label>
@@ -68,12 +66,7 @@
                     <option value="Search">Search</option>
                     <option value="Email">Email</option>
                     <option value="Media-buy">Media-buy</option>
-                   <option value="Ebook">Ebook</option>
-                   <option value="Blog">Blog</option>
-                    <option value="Influencer">Influencer</option>
-                    <option value="Remarketing">Remarketing</option>
                     <option value="manual">Manual Input</option>
-            
                 </select>
                 <label for="medium">Medium</label>
 
@@ -87,12 +80,12 @@
         </div>
 
         <div class="row">
-    <div class="input-field col s12">
-        <input id="campaign" type="text" class="validate" value="DPG - Search - Brazil - Portuguese - mt4/5 - Broad" required>
-        <label for="campaign">Campaign</label>
-        <i class="material-icons tooltipped" data-position="top" data-tooltip="DPG = Global Team, Search = Campaign Type, Brazil = Country, Portuguese = Language, MT4/5 = Product, Broad = Campaign Theme">info</i>
-    </div>
-</div>
+            <div class="input-field col s12">
+                <input id="campaign" type="text" class="validate" value="DPG - Search - Brazil - Portuguese - mt4/5 - Broad" required>
+                <label for="campaign">Campaign</label>
+                <i class="material-icons tooltipped" data-position="top" data-tooltip="DPG = Global Team, Search = Campaign Type, Brazil = Country, Portuguese = Language, MT4/5 = Product, Broad = Campaign Theme">info</i>
+            </div>
+        </div>
 
         <div class="row">
             <div class="input-field col s12">
@@ -117,8 +110,11 @@
 <script src="script.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems);
+        var elems = document.querySelectorAll('.tooltipped');
+        var instances = M.Tooltip.init(elems);
+
+        var selectElems = document.querySelectorAll('select');
+        var instancesSelect = M.FormSelect.init(selectElems);
     });
 
     function copyToClipboard() {
@@ -128,11 +124,6 @@
         M.toast({html: 'URL copied to clipboard!', classes: 'rounded'});
     }
 </script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.tooltipped');
-        var instances = M.Tooltip.init(elems);
-    });
-</script>
+
 </body>
 </html>
