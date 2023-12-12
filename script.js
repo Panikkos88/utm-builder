@@ -18,8 +18,28 @@ function buildURL() {
 }
 
 function generateUTMURL() {
-    // Your existing code to generate the UTM URL
-    // ...
+    var websiteURL = document.getElementById('website').value;
+    var source = document.getElementById('source').value;
+    var medium = document.getElementById('medium').value;
+    var customSource = document.getElementById('customSource').value;
+    var customMedium = document.getElementById('customMedium').value;
+
+    // Build the UTM parameters
+    var utmParameters = [
+        'utm_source=' + (source === 'manual' ? customSource : source),
+        'utm_medium=' + (medium === 'manual' ? customMedium : medium),
+        // Add other UTM parameters here
+    ];
+
+    // Combine the UTM parameters into the URL
+    var utmURL = websiteURL + '?' + utmParameters.join('&');
+
+    // Display the generated URL in the textarea
+    document.getElementById('utmResult').value = utmURL;
+
+    // Show the result section
+    document.getElementById('result').classList.remove('hidden');
+
 
     return utmURL;
 }
