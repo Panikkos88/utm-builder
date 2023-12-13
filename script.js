@@ -56,3 +56,10 @@ function getMediumValue() {
     
     return mediumDropdown.value === 'manual' ? customMediumInput.value : mediumDropdown.value;
 }
+function openNav() {
+    document.getElementById("sideMenu").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("sideMenu").style.width = "0";
+}
