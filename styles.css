@@ -6,39 +6,42 @@ body {
 .container {
     width: 80%;
     margin: 0 auto;
-    background-color: #fff; /* Set a background color for the container */
-    padding: 20px; /* Add padding for better spacing */
-    border-radius: 8px; /* Add rounded corners to the container */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
     width: 100px;
     height: auto;
 }
+
 .hidden {
     display: none;
 }
+
 #result {
     margin-top: 20px;
-    background-color: #eee; /* Set a background color for the result section */
-    padding: 10px; /* Add padding for better spacing */
-    border-radius: 4px; /* Add rounded corners */
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 4px;
 }
 
 #utmResult {
-    height: 100px; /* Adjust the height as needed */
-    resize: none; /* Disable textarea resizing */
-    width: 100%; /* Ensure the textarea takes up the full width */
-    border: none; /* Remove textarea border */
-    background-color: transparent; /* Make the background transparent */
-    font-family: 'Roboto', sans-serif; /* Use a Material Design font */
-    box-shadow: none; /* Remove box shadow */
-    outline: none; /* Remove outline on focus */
+    height: 100px;
+    resize: none;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: none;
+    outline: none;
 }
 
 @media only screen and (max-width: 600px) {
     #utmResult {
-        height: 100px; /* Adjust the height for smaller screens */
+        height: 100px;
     }
 }
+
