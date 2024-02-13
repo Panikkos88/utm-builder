@@ -39,7 +39,7 @@ function buildURL() {
     const medium = getMediumValue();
     const campaign = document.getElementById('campaign').value;
     const term = document.getElementById('term').value;
-    const content = document.getElementById('content').value;
+    const content = getSourceValue();
 
     const utmParams = {
         source: encodeURIComponent(source),
