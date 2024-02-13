@@ -114,12 +114,26 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="content" type="text" class="validate">
-                <label for="content">Content</label>
+      <div class="row">
+    <div class="input-field col s12">
+        <select id="content" name="content" onchange="handleContentChange()" required>
+            <option value="" disabled selected>Select Content</option>
+            <option value="diversify-your-portfolio">Diversify Your Portfolio</option>
+            <option value="secure-and-regulated">Secure and Regulated</option>
+            <option value="home-page">Home Page</option>
+            <option value="ninth-anniversary-promotion">Ninth Anniversary Promotion</option>
+            <!-- Add more content options here -->
+        </select>
+        <label for="content">Content</label>
+
+        <div id="customContentContainer" style="display: none;">
+            <label for="customContent">Custom Content</label>
+            <div id="manualContentInput">
+                <input type="text" id="customContent" name="customContent">
             </div>
         </div>
+    </div>
+</div>
 
         <button class="btn waves-effect waves-light" type="button" onclick="buildURL()">Build URL</button>
     </form>
