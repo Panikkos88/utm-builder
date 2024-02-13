@@ -20,9 +20,6 @@ function handleMediumChange() {
     }
 }
 
-
-
-
 function buildURL() {
     const website = document.getElementById('website').value;
     const source = getSourceValue();
