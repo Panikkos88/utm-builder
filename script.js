@@ -20,6 +20,27 @@ function handleMediumChange() {
     }
 }
 
+function handleContentChange() {
+    var content = document.getElementById('content').value;
+
+    // Toggle visibility of custom content input based on the selected content
+    var customContentContainer = document.getElementById('customContentContainer');
+    if (content === 'manual') {
+        customContentContainer.style.display = 'block';
+    } else {
+        customContentContainer.style.display = 'none';
+    }
+}
+
+function generateUTMURL() {
+    // Retrieve content value
+    var content = document.getElementById('content').value;
+    if (content === 'manual') {
+        content = document.getElementById('customContent').value;
+    }
+
+
+
 function buildURL() {
     const website = document.getElementById('website').value;
     const source = getSourceValue();
