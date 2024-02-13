@@ -20,6 +20,19 @@ function handleMediumChange() {
     }
 }
 
+function handleContentChange() {
+    const contentDropdown = document.getElementById('content');
+    const customContentContainer = document.getElementById('customContentContainer');
+
+    if (contentDropdown.value === 'manual') {
+        customContentContainer.style.display = 'block';
+    } else {
+        customContentContainer.style.display = 'none';
+    }
+}
+
+
+
 function buildURL() {
     const website = document.getElementById('website').value;
     const source = getSourceValue();
@@ -56,6 +69,14 @@ function getMediumValue() {
     
     return mediumDropdown.value === 'manual' ? customMediumInput.value : mediumDropdown.value;
 }
+
+function getContentValue() {
+    const contentDropdown = document.getElementById('content');
+    const customContentInput = document.getElementById('customContent');
+    
+    return contentDropdown.value === 'manual' ? customContentInput.value : contentDropdown.value;
+}
+
 function openNav() {
     document.getElementById("sideMenu").style.width = "250px";
 }
