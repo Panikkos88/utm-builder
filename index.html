@@ -359,6 +359,15 @@
             campaignInput.value = campaignParts.join("-");
         }
     }
+    // Function to handle country change event
+    function handleCountryChange() {
+        // Update the campaign field dynamically based on selected country
+        const country = document.getElementById('country').value;
+        updateCampaignCountry(country);
+    }
+
+
+    }
 </script>
 
     // Function to update the campaign field based on the selected country
@@ -379,7 +388,7 @@
         }
     }
 
-$1
+
 <!-- Importing Materialize JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <!-- Linking to external JavaScript file for custom logic -->
@@ -436,14 +445,14 @@ $1
         let currentCampaign = campaignInput.value;
 
         // Split the campaign value to modify the source part (second part)
-        let campaignParts = currentCampaign.split(" - ");
+        let campaignParts = currentCampaign.split("-");
 
         if (campaignParts.length >= 2) {
             // Update the second part to reflect the selected source
             campaignParts[1] = source;
 
             // Join the parts back together to form the updated campaign string
-            campaignInput.value = campaignParts.join(" - ");
+            campaignInput.value = campaignParts.join("-");
         }
     }
 
