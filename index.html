@@ -389,57 +389,6 @@
     }
 
     // Function to update the campaign field based on the selected country
-    function updateCampaignCountry(country) {
-        // Get the current campaign value
-        let campaignInput = document.getElementById('campaign');
-        let currentCampaign = campaignInput.value;
-
-        // Split the campaign value to modify the country part (fourth part)
-        let campaignParts = currentCampaign.split("-");
-
-        if (campaignParts.length >= 4) {
-            // Update the fourth part to reflect the selected country
-            campaignParts[3] = country;
-
-            // Join the parts back together to form the updated campaign string
-            campaignInput.value = campaignParts.join("-");
-        }
-    }
-
-    // Function to update the campaign field based on the selected language
-    function updateCampaignLanguage(language) {
-        // Get the current campaign value
-        let campaignInput = document.getElementById('campaign');
-        let currentCampaign = campaignInput.value;
-
-        // Split the campaign value to modify the language part (fifth part)
-        let campaignParts = currentCampaign.split("-");
-
-        if (campaignParts.length >= 5) {
-            // Update the fifth part to reflect the selected language
-            campaignParts[4] = language;
-
-            // Join the parts back together to form the updated campaign string
-            campaignInput.value = campaignParts.join("-");
-        }
-    }
-
-    // Function to update the campaign field based on the selected country
-    function updateCampaignCountry(country) {
-        // Get the current campaign value
-        let campaignInput = document.getElementById('campaign');
-        let currentCampaign = campaignInput.value;
-
-        // Split the campaign value to modify the country part (fourth part)
-        let campaignParts = currentCampaign.split("-");
-
-        if (campaignParts.length >= 4) {
-            // Update the fourth part to reflect the selected country
-            campaignParts[3] = country;
-
-            // Join the parts back together to form the updated campaign string
-            campaignInput.value = campaignParts.join("-");
-        }
     </script>
 
 
