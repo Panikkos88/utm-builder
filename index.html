@@ -11,7 +11,490 @@
     <link rel="stylesheet" href="styles.css">
     <title>DooPrime UTM-URL Builder</title>
 </head>
+<body><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Importing Google Font for styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <!-- Importing Materialize CSS for UI components and styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="styles.css">
+    <title>DooPrime UTM-URL Builder</title>
+</head>
 <body>
+
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <!-- Add your menu items here -->
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+        <a href="#">Link 4</a>
+    </div>
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>
+    <div class="container center-align">
+
+    <!-- Logo for the DooPrime UTM URL Builder -->
+    <img src="https://www.dooprime.com/wp-content/themes/DP3-1104/style/images/common/Man_Utd_x_Doo_mobile.png" alt="Dooprime Logo" class="logo mx-auto">
+
+    <!-- Main header for the page -->
+    <h5 class="header">Simple UTM Generator for DooPrime Global Team</h5>
+    
+    <!-- Container to display the result URL once generated -->
+    <div id="result" class="hidden">
+        <h4>Generated URL:</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <!-- Textarea to display generated UTM URL (readonly) -->
+                <textarea id="utmResult" class="materialize-textarea" readonly rows="4"></textarea>
+                <label for="utmResult">Result URL</label>
+                <!-- Button to copy the URL to clipboard -->
+                <button class="btn waves-effect waves-light" onclick="copyToClipboard()">Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- UTM Form for users to input their details -->
+    <form class="col s12" id="utmForm">
+        <!-- Website URL input -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="website" type="url" class="validate" value="https://www.dooprime.com/en/" required>
+                <label for="website">Website URL</label>
+            </div>
+        </div>
+
+        <!-- Source selection dropdown -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="source" name="source" onchange="handleSourceChange()" required>
+                    <option value="Google">Google</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="CRM">CRM</option>
+                    <!-- More predefined options -->
+                    <option value="manual">Manual Input</option>
+                </select>
+                <label for="source">Source</label>
+
+                <!-- Custom input field for manual source entry -->
+                <div id="customSourceContainer" style="display: none;">
+                    <label for="customSource">Custom Source</label>
+                    <div id="manualSourceInput">
+                        <input type="text" id="customSource" name="customSource">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medium selection dropdown -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="medium" name="medium" onchange="handleMediumChange()" required>
+                    <option value="" disabled selected>Select Medium</option>
+                    <option value="Social">Social</option>
+                    <option value="Display">Display</option>
+                    <option value="Search">Search</option>
+                    <option value="Email">Email</option>
+                    <option value="manual">Manual Input</option>
+                </select>
+                <label for="medium">Medium</label>
+                <div id="customMediumContainer" style="display: none;">
+                    <label for="customMedium">Custom Medium</label>
+                    <div id="manualMediumInput">
+                        <input type="text" id="customMedium" name="customMedium">
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+
+        
+
+        <!-- Country selection dropdown -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="country" name="country" onchange="handleCountryChange()"  required>
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="AF">Afghanistan</option>
+                    <option value="AL">Albania</option>
+                    <option value="DZ">Algeria</option>
+                    <option value="AS">American Samoa</option>
+                    <option value="AD">Andorra</option>
+                    <option value="AO">Angola</option>
+                    <option value="AI">Anguilla</option>
+                    <option value="AQ">Antarctica</option>
+                    <option value="AG">Antigua and Barbuda</option>
+                    <option value="AR">Argentina</option>
+                    <option value="AM">Armenia</option>
+                    <option value="AW">Aruba</option>
+                    <option value="AU">Australia</option>
+                    <option value="AT">Austria</option>
+                    <option value="AZ">Azerbaijan</option>
+                    <option value="BS">Bahamas</option>
+                    <option value="BH">Bahrain</option>
+                    <option value="BD">Bangladesh</option>
+                    <option value="BB">Barbados</option>
+                    <option value="BY">Belarus</option>
+                    <option value="BE">Belgium</option>
+                    <option value="BZ">Belize</option>
+                    <option value="BJ">Benin</option>
+                    <option value="BM">Bermuda</option>
+                    <option value="BT">Bhutan</option>
+                    <option value="BO">Bolivia</option>
+                    <option value="BA">Bosnia and Herzegovina</option>
+                    <option value="BW">Botswana</option>
+                    <option value="BR">Brazil</option>
+                    <option value="IO">British Indian Ocean Territory</option>
+                    <option value="VG">British Virgin Islands</option>
+                    <option value="BN">Brunei</option>
+                    <option value="BG">Bulgaria</option>
+                    <option value="BF">Burkina Faso</option>
+                    <option value="BI">Burundi</option>
+                    <option value="CV">Cabo Verde</option>
+                    <option value="KH">Cambodia</option>
+                    <option value="CM">Cameroon</option>
+                    <option value="CA">Canada</option>
+                    <option value="KY">Cayman Islands</option>
+                    <option value="CF">Central African Republic</option>
+                    <option value="TD">Chad</option>
+                    <option value="CL">Chile</option>
+                    <option value="CN">China</option>
+                    <option value="CO">Colombia</option>
+                    <option value="KM">Comoros</option>
+                    <option value="CG">Congo</option>
+                    <option value="CD">Congo (DRC)</option>
+                    <option value="CK">Cook Islands</option>
+                    <option value="CR">Costa Rica</option>
+                    <option value="CI">Côte d’Ivoire</option>
+                    <option value="HR">Croatia</option>
+                    <option value="CU">Cuba</option>
+                    <option value="CY">Cyprus</option>
+                    <option value="CZ">Czechia</option>
+                    <option value="DK">Denmark</option>
+                    <option value="DJ">Djibouti</option>
+                    <option value="DM">Dominica</option>
+                    <option value="DO">Dominican Republic</option>
+                    <option value="EC">Ecuador</option>
+                    <option value="EG">Egypt</option>
+                    <option value="SV">El Salvador</option>
+                    <option value="GQ">Equatorial Guinea</option>
+                    <option value="ER">Eritrea</option>
+                    <option value="EE">Estonia</option>
+                    <option value="SZ">Eswatini</option>
+                    <option value="ET">Ethiopia</option>
+                    <option value="FJ">Fiji</option>
+                    <option value="FI">Finland</option>
+                    <option value="FR">France</option>
+                    <option value="GA">Gabon</option>
+                    <option value="GM">Gambia</option>
+                    <option value="GE">Georgia</option>
+                    <option value="DE">Germany</option>
+                    <option value="GH">Ghana</option>
+                    <option value="GR">Greece</option>
+                    <option value="GD">Grenada</option>
+                    <option value="GU">Guam</option>
+                    <option value="GT">Guatemala</option>
+                    <option value="GN">Guinea</option>
+                    <option value="GW">Guinea-Bissau</option>
+                    <option value="GY">Guyana</option>
+                    <option value="HT">Haiti</option>
+                    <option value="HN">Honduras</option>
+                    <option value="HK">Hong Kong</option>
+                    <option value="HU">Hungary</option>
+                    <option value="IS">Iceland</option>
+                    <option value="IN">India</option>
+                    <option value="ID">Indonesia</option>
+                    <option value="IR">Iran</option>
+                    <option value="IQ">Iraq</option>
+                    <option value="IE">Ireland</option>
+                    <option value="IL">Israel</option>
+                    <option value="IT">Italy</option>
+                    <option value="JM">Jamaica</option>
+                    <option value="JP">Japan</option>
+                    <option value="JO">Jordan</option>
+                    <option value="KZ">Kazakhstan</option>
+                    <option value="KE">Kenya</option>
+                    <option value="KI">Kiribati</option>
+                    <option value="KP">Korea (North)</option>
+                    <option value="KR">Korea (South)</option>
+                    <option value="KW">Kuwait</option>
+                    <option value="KG">Kyrgyzstan</option>
+                    <option value="LA">Laos</option>
+                    <option value="LV">Latvia</option>
+                    <option value="LB">Lebanon</option>
+                    <option value="LS">Lesotho</option>
+                    <option value="LR">Liberia</option>
+                    <option value="LY">Libya</option>
+                    <option value="LI">Liechtenstein</option>
+                    <option value="LT">Lithuania</option>
+                    <option value="LU">Luxembourg</option>
+                    <option value="MO">Macau</option>
+                    <option value="MG">Madagascar</option>
+                    <option value="MW">Malawi</option>
+                    <option value="MY">Malaysia</option>
+                    <option value="MV">Maldives</option>
+                    <option value="ML">Mali</option>
+                    <option value="MT">Malta</option>
+                    <option value="MH">Marshall Islands</option>
+                    <option value="MR">Mauritania</option>
+                    <option value="MU">Mauritius</option>
+                    <option value="MX">Mexico</option>
+                    <option value="FM">Micronesia</option>
+                    <option value="MD">Moldova</option>
+                    <option value="MC">Monaco</option>
+                    <option value="MN">Mongolia</option>
+                    <option value="ME">Montenegro</option>
+                    <option value="MA">Morocco</option>
+                    <option value="MZ">Mozambique</option>
+                    <option value="MM">Myanmar (Burma)</option>
+                    <option value="NA">Namibia</option>
+                    <option value="NR">Nauru</option>
+                    <option value="NP">Nepal</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="NI">Nicaragua</option>
+                    <option value="NE">Niger</option>
+                    <option value="NG">Nigeria</option>
+                    <option value="NO">Norway</option>
+                    <option value="OM">Oman</option>
+                    <option value="PK">Pakistan</option>
+                    <option value="PW">Palau</option>
+                    <option value="PA">Panama</option>
+                    <option value="PG">Papua New Guinea</option>
+                    <option value="PY">Paraguay</option>
+                    <option value="PE">Peru</option>
+                    <option value="PH">Philippines</option>
+                    <option value="PL">Poland</option>
+                    <option value="PT">Portugal</option>
+                    <option value="QA">Qatar</option>
+                    <option value="RO">Romania</option>
+                    <option value="RU">Russia</option>
+                    <option value="RW">Rwanda</option>
+                    <option value="WS">Samoa</option>
+                    <option value="SA">Saudi Arabia</option>
+                    <option value="SN">Senegal</option>
+                    <option value="RS">Serbia</option>
+                    <option value="SC">Seychelles</option>
+                    <option value="SL">Sierra Leone</option>
+                    <option value="SG">Singapore</option>
+                    <option value="SK">Slovakia</option>
+                    <option value="SI">Slovenia</option>
+                    <option value="SB">Solomon Islands</option>
+                    <option value="SO">Somalia</option>
+                    <option value="ZA">South Africa</option>
+                    <option value="SS">South Sudan</option>
+                    <option value="ES">Spain</option>
+                    <option value="LK">Sri Lanka</option>
+                    <option value="SD">Sudan</option>
+                    <option value="SR">Suriname</option>
+                    <option value="SE">Sweden</option>
+                    <option value="CH">Switzerland</option>
+                    <option value="SY">Syria</option>
+                    <option value="TW">Taiwan</option>
+                    <option value="TJ">Tajikistan</option>
+                    <option value="TZ">Tanzania</option>
+                    <option value="TH">Thailand</option>
+                    <option value="TL">Timor-Leste</option>
+                    <option value="TG">Togo</option>
+                    <option value="TO">Tonga</option>
+                    <option value="TT">Trinidad and Tobago</option>
+                    <option value="TN">Tunisia</option>
+                    <option value="TR">Turkey</option>
+                    <option value="TM">Turkmenistan</option>
+                    <option value="TV">Tuvalu</option>
+                    <option value="UG">Uganda</option>
+                    <option value="UA">Ukraine</option>
+                    <option value="AE">United Arab Emirates</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="US">United States</option>
+                    <option value="UY">Uruguay</option>
+                    <option value="UZ">Uzbekistan</option>
+                    <option value="VU">Vanuatu</option>
+                    <option value="VE">Venezuela</option>
+                    <option value="VN">Vietnam</option>
+                    <option value="EH">Western Sahara</option>
+                    <option value="YE">Yemen</option>
+                    <option value="ZM">Zambia</option>
+                    <option value="ZW">Zimbabwe</option>
+                </select>
+                <label for="country">Country</label>
+            </div>
+        </div>
+
+        <!-- Campaign name input -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="campaign" type="text" class="validate" value="DPG-Search-Brazil-Portuguese-Broad" required>
+                <label for="campaign">Campaign</label>
+            </div>
+        </div>
+
+        <!-- Term input field -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="term" type="text" class="validate">
+                <label for="term">Term</label>
+            </div>
+        </div>
+
+        <!-- Content selection dropdown -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="content" name="content" onchange="handleContentChange()" required>
+                    <option value="" disabled selected>Select Content</option>
+                    <option value="diversify-your-portfolio">Diversify Your Portfolio</option>
+                    <!-- More predefined options -->
+                    <option value="manual">Manual Input</option>
+                </select>
+                <label for="content">Content</label>
+
+                <!-- Custom input field for manual content entry -->
+                <div id="customContentContainer" style="display: none;">
+                    <label for="customContent">Custom Content</label>
+                    <div id="manualContentInput">
+                        <input type="text" id="customContent" name="customContent">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button to generate UTM URL -->
+        <button class="btn waves-effect waves-light" type="button" onclick="buildURL()">Build URL</button>
+    </form>
+</div>
+
+<!-- Importing jQuery library -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    // Function to handle country change event
+    function handleCountryChange() {
+        // Update the campaign field dynamically based on selected country
+        const country = document.getElementById('country').value;
+        updateCampaignCountry(country);
+    }
+
+    // Function to update the campaign field based on the selected country
+    function updateCampaignCountry(country) {
+        // Get the current campaign value
+        let campaignInput = document.getElementById('campaign');
+        let currentCampaign = campaignInput.value;
+
+        // Split the campaign value to modify the country part (fourth part)
+        let campaignParts = currentCampaign.split("-");
+
+        if (campaignParts.length >= 4) {
+            // Update the fourth part to reflect the selected country
+            campaignParts[3] = country;
+
+            // Join the parts back together to form the updated campaign string
+            campaignInput.value = campaignParts.join("-");
+        }
+    }
+
+    }
+</script>    }
+
+
+<!-- Importing Materialize JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Linking to external JavaScript file for custom logic -->
+<script src="script.js"></script>
+
+<!-- Inline JavaScript for initializing Materialize components and handling button interactions -->
+<script>
+    // Initialize Materialize select elements on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+        M.updateTextFields();
+    });
+
+    // Function to copy the generated UTM URL to clipboard
+    function copyToClipboard() {
+        var copyText = document.getElementById("utmResult");
+        navigator.clipboard.writeText(copyText.value).then(() => {
+            // Show toast message when successfully copied
+            M.toast({html: 'URL copied to clipboard!', classes: 'rounded'});
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+
+    // Placeholder functions for custom source/medium/content handling
+    function handleSourceChange() {
+        // Show/hide custom source input based on user selection
+        const source = document.getElementById('source').value;
+        document.getElementById('customSourceContainer').style.display = source === 'manual' ? 'block' : 'none';
+
+        // Update the campaign field dynamically
+        updateCampaignSource(source);
+    }
+
+    function handleMediumChange() {
+        // Show/hide custom medium input based on user selection
+        const medium = document.getElementById('medium').value;
+        document.getElementById('customMediumContainer').style.display = medium === 'manual' ? 'block' : 'none';
+
+        // Update the campaign field dynamically
+        updateCampaignMedium(medium);
+    }
+
+    function handleContentChange() {
+        // Show/hide custom content input based on user selection
+        const content = document.getElementById('content').value;
+        document.getElementById('customContentContainer').style.display = content === 'manual' ? 'block' : 'none';
+    }
+
+    // Function to update the campaign field based on the selected source
+    function updateCampaignSource(source) {
+        // Get the current campaign value
+        let campaignInput = document.getElementById('campaign');
+        let currentCampaign = campaignInput.value;
+
+        // Split the campaign value to modify the source part (second part)
+        let campaignParts = currentCampaign.split("-");
+
+        if (campaignParts.length >= 2) {
+            // Update the second part to reflect the selected source
+            campaignParts[1] = source;
+
+            // Join the parts back together to form the updated campaign string
+            campaignInput.value = campaignParts.join("-");
+        }
+    }
+
+    // Function to update the campaign field based on the selected medium
+    function updateCampaignMedium(medium) {
+        // Get the current campaign value
+        let campaignInput = document.getElementById('campaign');
+        let currentCampaign = campaignInput.value;
+
+        // Split the campaign value to modify the medium part (third part)
+        let campaignParts = currentCampaign.split("-");
+
+        if (campaignParts.length >= 3) {
+            // Update the third part to reflect the selected medium
+            campaignParts[2] = medium;
+
+            // Join the parts back together to form the updated campaign string
+            campaignInput.value = campaignParts.join("-");
+        }
+    }
+
+    // Placeholder function to build UTM URL (implement in script.js)
+    function buildURL() {
+        // Logic to generate and display UTM URL would go here
+    }
+</script>
+
+</body>
+</html>
+
 
     <div id="sideMenu" class="side-menu">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
