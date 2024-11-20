@@ -406,6 +406,23 @@
             campaignInput.value = campaignParts.join("-");
         }
     }
+// Function to update the campaign field based on the selected language
+    function updateCampaignLanguage(language) {
+        // Get the current campaign value
+        let campaignInput = document.getElementById('campaign');
+        let currentCampaign = campaignInput.value;
+
+        // Split the campaign value to modify the language part (fifth part)
+        let campaignParts = currentCampaign.split("-");
+
+        if (campaignParts.length >= 5) {
+            // Update the fifth part to reflect the selected language
+            campaignParts[4] = language;
+
+            // Join the parts back together to form the updated campaign string
+            campaignInput.value = campaignParts.join("-");
+        }
+    }
 </script>
 <!-- Importing Materialize JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
