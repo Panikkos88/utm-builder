@@ -105,7 +105,7 @@
         <!-- Country selection dropdown -->
         <div class="row">
             <div class="input-field col s12">
-                <select id="country" name="country" onchange="handleCountryChange()"  required>
+                <select id="country" name="country" onchange="handleCountryChange()" required>
                     <option value="" disabled selected>Select Country</option>
                     <option value="AF">Afghanistan</option>
                     <option value="AL">Albania</option>
@@ -313,10 +313,26 @@
             </div>
         </div>
 
+        <!-- Language selection dropdown -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="language" name="language" onchange="handleLanguageChange()" required>
+                    <option value="" disabled selected>Select Language</option>
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Portuguese">Portuguese</option>
+                    <option value="Arabic">Arabic</option>
+                    <option value="Thai">Thai</option>
+                    <option value="Vietnamese">Vietnamese</option>
+                </select>
+                <label for="language">Language</label>
+            </div>
+        </div>
+
         <!-- Campaign name input -->
         <div class="row">
             <div class="input-field col s12">
-                <input id="campaign" type="text" class="validate" value="DPG-Search-Brazil-Portuguese-Broad" required>
+                <input id="campaign" type="text" class="validate" value="DPG-Google-Search-AR-Spanish" required>
                 <label for="campaign">Campaign</label>
             </div>
         </div>
@@ -365,6 +381,13 @@
         updateCampaignCountry(country);
     }
 
+    // Function to handle language change event
+    function handleLanguageChange() {
+        // Update the campaign field dynamically based on selected language
+        const language = document.getElementById('language').value;
+        updateCampaignLanguage(language);
+    }
+
     // Function to update the campaign field based on the selected country
     function updateCampaignCountry(country) {
         // Get the current campaign value
@@ -382,7 +405,42 @@
             campaignInput.value = campaignParts.join("-");
         }
     }
-</script>
+
+    // Function to update the campaign field based on the selected language
+    function updateCampaignLanguage(language) {
+        // Get the current campaign value
+        let campaignInput = document.getElementById('campaign');
+        let currentCampaign = campaignInput.value;
+
+        // Split the campaign value to modify the language part (fifth part)
+        let campaignParts = currentCampaign.split("-");
+
+        if (campaignParts.length >= 5) {
+            // Update the fifth part to reflect the selected language
+            campaignParts[4] = language;
+
+            // Join the parts back together to form the updated campaign string
+            campaignInput.value = campaignParts.join("-");
+        }
+    }
+
+    // Function to update the campaign field based on the selected country
+    function updateCampaignCountry(country) {
+        // Get the current campaign value
+        let campaignInput = document.getElementById('campaign');
+        let currentCampaign = campaignInput.value;
+
+        // Split the campaign value to modify the country part (fourth part)
+        let campaignParts = currentCampaign.split("-");
+
+        if (campaignParts.length >= 4) {
+            // Update the fourth part to reflect the selected country
+            campaignParts[3] = country;
+
+            // Join the parts back together to form the updated campaign string
+            campaignInput.value = campaignParts.join("-");
+        }
+    </script>
 
 
 <!-- Importing Materialize JavaScript -->
