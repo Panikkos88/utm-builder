@@ -77,6 +77,29 @@
             </div>
         </div>
 
+        <!-- Medium selection dropdown -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="medium" name="medium" onchange="handleMediumChange()" required>
+                    <option value="" disabled selected>Select Medium</option>
+                    <option value="Social">Social</option>
+                    <option value="Display">Display</option>
+                    <option value="Search">Search</option>
+                    <option value="Email">Email</option>
+                    <option value="manual">Manual Input</option>
+                </select>
+                <label for="medium">Medium</label>
+                <div id="customMediumContainer" style="display: none;">
+                    <label for="customMedium">Custom Medium</label>
+                    <div id="manualMediumInput">
+                        <input type="text" id="customMedium" name="customMedium">
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+
         
 
         <!-- Country selection dropdown -->
