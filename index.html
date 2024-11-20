@@ -510,9 +510,28 @@
         }
     }
 
-    // Placeholder function to build UTM URL (implement in script.js)
+    // Function to build UTM URL
     function buildURL() {
-        // Logic to generate and display UTM URL would go here
+        const website = document.getElementById('website').value;
+        const source = document.getElementById('source').value;
+        const medium = document.getElementById('medium').value;
+        const campaign = document.getElementById('campaign').value;
+        const term = document.getElementById('term').value;
+        const content = document.getElementById('content').value;
+
+        let utmUrl = `${website}?utm_source=${source}&utm_medium=${medium}&utm_campaign=${campaign}`;
+
+        if (term) {
+            utmUrl += `&utm_term=${term}`;
+        }
+
+        if (content) {
+            utmUrl += `&utm_content=${content}`;
+        }
+
+        // Display the generated UTM URL
+        document.getElementById('utmResult').value = utmUrl;
+        document.getElementById('result').classList.remove('hidden');
     }
 </script>
 
