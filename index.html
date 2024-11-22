@@ -3,217 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Importing Google Font for styling -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
-    <!-- Importing Materialize CSS for UI components and styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Custom styles -->
     <link rel="stylesheet" href="styles.css">
     <title>DooPrime UTM-URL Builder</title>
 </head>
 <body>
+<div id="sideMenu" class="side-menu">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <!-- Add your menu items here -->
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
+</div>
 
-    <div id="sideMenu" class="side-menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <!-- Add your menu items here -->
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-        <a href="#">Link 4</a>
-    </div>
-
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>
-    <div class="container center-align">
-
-    <!-- Logo for the DooPrime UTM URL Builder -->
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Open Menu</span>
+<div class="container center-align">
+    <!-- Logo -->
     <img src="https://www.dooprime.com/wp-content/themes/DP3-1104/style/images/common/Man_Utd_x_Doo_mobile.png" alt="Dooprime Logo" class="logo mx-auto">
 
-    <!-- Main header for the page -->
-    <h5 class="header">Simple UTM Generator for DooPrime Global Team</h5>
-    
-    <!-- Container to display the result URL once generated -->
+    <h5 class="header">Simple utm gennerator for dooprime Global Team</h5>
     <div id="result" class="hidden">
-        <h4>Generated URL:</h4>
+        <h4>Generated url:</h4>
         <div class="row">
             <div class="input-field col s12">
-                <!-- Textarea to display generated UTM URL (readonly) -->
                 <textarea id="utmResult" class="materialize-textarea" readonly rows="4"></textarea>
                 <label for="utmResult">Result URL</label>
-                <!-- Button to copy the URL to clipboard -->
                 <button class="btn waves-effect waves-light" onclick="copyToClipboard()">Copy to Clipboard</button>
             </div>
         </div>
     </div>
 
-    <!-- UTM Form for users to input their details -->
     <form class="col s12" id="utmForm">
-        <div class="container">
-            
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="website" type="url" class="validate" value="https://www.dooprime.com/en/" required>
+                <label for="website">Website URL</label>
+            </div>
         </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="source" name="source" onchange="handleSourceChange()" required>
+                    <option value="Google">Google</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="CRM">CRM</option>
+                    <option value="SG">SG</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Yahoo">Yahoo</option>
+                    <option value="Bing">Bing</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Telegram">Telegram</option>
+                    <option value="Twitter/X">Twitter/X</option>
+                    <option value="Adroll">Adroll</option>
+                    <option value="blog">Blog</option>
+                    <option value="Criteo">Criteo</option>
+                    <option value="manual">Manual Input</option>
+                </select>
+                <label for="source">Source</label>
+
+                <div id="customSourceContainer" style="display: none;">
+                    <label for="customSource">Custom Source</label>
+                    <div id="manualSourceInput">
+                        <input type="text" id="customSource" name="customSource">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="medium" name="medium" onchange="handleMediumChange()" required>
+                    <option value="Social">Social</option>
+                    <option value="Display">Display</option>
+                    <option value="Search">Search</option>
+                    <option value="Email">Email</option>
+                    <option value="Media-buy">Media-buy</option>
+                    <option value="Ebook">Ebook</option>
+                    <option value="Influencer">Influencer</option>
+                    <option value="Blog">Blog</option>
+                    <option value="Remarketing">Remarketing</option>
+                    <option value="Expo">Expo</option>
+                    <option value="Seminar">Seminar</option>
+                    <option value="manual">Manual Input</option>
+                </select>
+                <label for="medium">Medium</label>
+
+                <div id="customMediumContainer" style="display: none;">
+                    <label for="customMedium">Custom Medium</label>
+                    <div id="manualMediumInput">
+                        <input type="text" id="customMedium" name="customMedium">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="campaign" type="text" class="validate" value="DPG - Search - Brazil - Portuguese - Broad" required>
+                <label for="campaign">Campaign</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="term" type="text" class="validate">
+                <label for="term">Term</label>
+            </div>
+        </div>
+
+      <div class="row">
+    <div class="input-field col s12">
+        <select id="content" name="content" onchange="handleContentChange()" required>
+            <option value="" disabled selected>Select Content</option>
+            <option value="diversify-your-portfolio">Diversify Your Portfolio</option>
+            <option value="secure-and-regulated">Secure and Regulated</option>
+            <option value="home-page">Home Page</option>
+            <option value="ninth-anniversary-promotion">Ninth Anniversary Promotion</option>
+             <option value="20-deposit-bonus">20 Percent Deposit Bonus</option>
+            <option value="manual">Manual Input</option>
+        </select>
+        <label for="content">Content</label>
+
+        <div id="customContentContainer" style="display: none;">
+            <label for="customContent">Custom Content</label>
+            <div id="manualContentInput">
+                <input type="text" id="customContent" name="customContent">
+            </div>
+        </div>
+    </div>
+</div>
+
+        <button class="btn waves-effect waves-light" type="button" onclick="buildURL()">Build URL</button>
     </form>
 </div>
 
-<!-- Importing jQuery library -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-    // Function to handle country change event
-    function handleCountryChange() {
-        // Update the campaign field dynamically based on selected country
-        const country = document.getElementById('country').value;
-        updateCampaignCountry(country);
-    }
-
-    // Function to handle language change event
-    function handleLanguageChange() {
-        // Update the campaign field dynamically based on selected language
-        const language = document.getElementById('language').value;
-        updateCampaignLanguage(language);
-    }
-
-    // Function to update the campaign field based on the selected country
-    // Function to update the campaign field based on the selected country
-    function updateCampaignCountry(country) {
-        // Get the current campaign value
-        let campaignInput = document.getElementById('campaign');
-        let currentCampaign = campaignInput.value;
-
-        // Split the campaign value to modify the country part (fourth part)
-        let campaignParts = currentCampaign.split("-");
-
-        if (campaignParts.length >= 4) {
-            // Update the fourth part to reflect the selected country
-            campaignParts[3] = country;
-
-            // Join the parts back together to form the updated campaign string
-            campaignInput.value = campaignParts.join("-");
-        }
-    }
-// Function to update the campaign field based on the selected language
-    function updateCampaignLanguage(language) {
-        // Get the current campaign value
-        let campaignInput = document.getElementById('campaign');
-        let currentCampaign = campaignInput.value;
-
-        // Split the campaign value to modify the language part (fifth part)
-        let campaignParts = currentCampaign.split("-");
-
-        if (campaignParts.length >= 5) {
-            // Update the fifth part to reflect the selected language
-            campaignParts[4] = language;
-
-            // Join the parts back together to form the updated campaign string
-            campaignInput.value = campaignParts.join("-");
-        }
-    }
-</script>
-<!-- Importing Materialize JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<!-- Linking to external JavaScript file for custom logic -->
 <script src="script.js"></script>
-
-<!-- Inline JavaScript for initializing Materialize components and handling button interactions -->
 <script>
-    // Initialize Materialize select elements on page load
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems);
-        M.updateTextFields();
     });
 
-    // Function to copy the generated UTM URL to clipboard
     function copyToClipboard() {
         var copyText = document.getElementById("utmResult");
-        navigator.clipboard.writeText(copyText.value).then(() => {
-            // Show toast message when successfully copied
-            M.toast({html: 'URL copied to clipboard!', classes: 'rounded'});
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-        });
-    }
-
-    // Placeholder functions for custom source/medium/content handling
-    function handleSourceChange() {
-        // Show/hide custom source input based on user selection
-        const source = document.getElementById('source').value;
-        document.getElementById('customSourceContainer').style.display = source === 'manual' ? 'block' : 'none';
-
-        // Update the campaign field dynamically
-        updateCampaignSource(source);
-    }
-
-    function handleMediumChange() {
-        // Show/hide custom medium input based on user selection
-        const medium = document.getElementById('medium').value;
-        document.getElementById('customMediumContainer').style.display = medium === 'manual' ? 'block' : 'none';
-
-        // Update the campaign field dynamically
-        updateCampaignMedium(medium);
-    }
-
-    function handleContentChange() {
-        // Show/hide custom content input based on user selection
-        const content = document.getElementById('content').value;
-        document.getElementById('customContentContainer').style.display = content === 'manual' ? 'block' : 'none';
-    }
-
-    // Function to update the campaign field based on the selected source
-    function updateCampaignSource(source) {
-        // Get the current campaign value
-        let campaignInput = document.getElementById('campaign');
-        let currentCampaign = campaignInput.value;
-
-        // Split the campaign value to modify the source part (second part)
-        let campaignParts = currentCampaign.split("-");
-
-        if (campaignParts.length >= 2) {
-            // Update the second part to reflect the selected source
-            campaignParts[1] = source;
-
-            // Join the parts back together to form the updated campaign string
-            campaignInput.value = campaignParts.join("-");
-        }
-    }
-
-    // Function to update the campaign field based on the selected medium
-    function updateCampaignMedium(medium) {
-        // Get the current campaign value
-        let campaignInput = document.getElementById('campaign');
-        let currentCampaign = campaignInput.value;
-
-        // Split the campaign value to modify the medium part (third part)
-        let campaignParts = currentCampaign.split("-");
-
-        if (campaignParts.length >= 3) {
-            // Update the third part to reflect the selected medium
-            campaignParts[2] = medium;
-
-            // Join the parts back together to form the updated campaign string
-            campaignInput.value = campaignParts.join("-");
-        }
-    }
-
-    // Function to build UTM URL
-    function buildURL() {
-        const website = document.getElementById('website').value;
-        const source = document.getElementById('source').value;
-        const medium = document.getElementById('medium').value;
-        const campaign = document.getElementById('campaign').value;
-        const term = document.getElementById('term').value;
-        const content = document.getElementById('content').value;
-
-        let utmUrl = `${website}?utm_source=${source}&utm_medium=${medium}&utm_campaign=${campaign}`;
-
-        if (term) {
-            utmUrl += `&utm_term=${term}`;
-        }
-
-        if (content) {
-            utmUrl += `&utm_content=${content}`;
-        }
-
-        // Display the generated UTM URL
-        document.getElementById('utmResult').value = utmUrl;
-        document.getElementById('result').classList.remove('hidden');
+        copyText.select();
+        document.execCommand("copy");
+        M.toast({html: 'URL copied to clipboard!', classes: 'rounded'});
     }
 </script>
 
